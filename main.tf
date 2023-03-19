@@ -21,7 +21,7 @@ resource "google_container_node_pool" "default" {
   name       = "${var.cluster_name}-node-pool"
   project    = var.project_id
   location   = var.region
-  cluster    = google_container_cluster.default.cluster_name
+  cluster    = google_container_cluster.default.name
   node_count = 1
 
   node_config {
