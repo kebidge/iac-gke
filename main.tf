@@ -8,8 +8,8 @@ resource "google_container_cluster" "default" {
   initial_node_count       = var.initial_node_count
 
   master_auth {
-    username = ""
-    password = ""
+    #username = ""
+    #password = ""
 
     client_certificate_config {
       issue_client_certificate = false
