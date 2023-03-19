@@ -3,6 +3,10 @@ provider "google" {
   region  = var.region
 }
 
+variable "project_id" {
+    type = string
+}
+
 resource "google_container_cluster" "cluster" {
   name               = var.cluster_name
   location           = var.region
