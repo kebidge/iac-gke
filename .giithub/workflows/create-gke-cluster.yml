@@ -1,0 +1,37 @@
+name: Create GKE Cluster
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v1
+      with:
+        terraform_version: 1.0.7
+
+    - name: Authenticate with GCP
+      uses: GoogleCloudPlatform/github-actions/setup-gcloud@v0.3.1
+      with:
+        project_id: ${{ secrets.GKE_PROJECT }}
+        service_account_key: ${{ secrets.GKE_ADMIN }}
+
+    - name: Terraform Init
+      run: terraform init
+
+    - name: Terraform Validate
+      run: terraform validate
+
+    - name: Terraform Apply
+      env:
+        TF_VAR_project_id: ${{ secrets.GKE_PROJECT }}
+        TF_VAR_region: ${{ secrets.GKE_REGION }}
+      run: terraform apply -auto-approve
