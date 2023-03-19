@@ -7,6 +7,26 @@ variable "project_id" {
     type = string
 }
 
+variable "region" {
+    type = string
+}
+
+variable "cluster_name" {
+    type = string
+}
+
+variable "initial_node_count" {
+    type = number
+}
+
+variable "machine_type" {
+    type = string
+}
+
+variable "disk_size_gb" {
+    type = number
+}
+
 resource "google_container_cluster" "cluster" {
   name               = var.cluster_name
   location           = var.region
