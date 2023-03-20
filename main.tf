@@ -1,7 +1,18 @@
+provider "google" {
+  project     = var.project_id
+  region      = var.region
+  zone        = var.zone
+}
+provider "google-beta" {
+  project     = var.project_id
+  region      = var.region
+  zone        = var.zone
+}
+
 resource "google_container_cluster" "default" {
   name        = var.cluster_name
   project     = var.project_id
-  description = "Demo GKE Cluster"
+  description = var.description
   location    = var.region
 
   remove_default_node_pool = true

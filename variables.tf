@@ -1,5 +1,5 @@
 variable "cluster_name" {
-  default = "tf-gke-cluster"
+  default = "tf-iac-gke-cluster"
 }
 
 variable "project_id" {
@@ -8,6 +8,14 @@ variable "project_id" {
 
 variable "region" {
   default = "europe-west1"
+}
+
+variable "zone" {
+  default = "europe-west1-b"
+}
+
+variable "description" {
+  default = "TF IaC GKE Cluster"
 }
 
 variable "initial_node_count" {
