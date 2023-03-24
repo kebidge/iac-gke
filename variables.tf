@@ -1,5 +1,5 @@
 variable "cluster_name" {
-  default = "tf-iac-gke-cluster"
+  default = "tf-iac-gke-cluster1"
 }
 
 variable "project_id" {
